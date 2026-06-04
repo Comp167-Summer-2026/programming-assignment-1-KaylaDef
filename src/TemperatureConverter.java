@@ -48,6 +48,7 @@ public class TemperatureConverter {
             System.out.println("Please enter a unit: ");
             unit = scnr.nextLine();
 
+            //check again after fix
             if(unit.toUpperCase().equals("C") || unit.toUpperCase().equals("F")){
                 System.out.println("Conversion beginning");
                 System.out.printf("%.2f%n",tempD);
