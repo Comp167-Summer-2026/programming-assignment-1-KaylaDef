@@ -8,7 +8,7 @@ public class TemperatureConverter {
         //C -> F
         unit = unit.toUpperCase();
         if(unit.equals("C")) {
-            convertedTemperature = ((temperature * 5/9) + 32);
+            convertedTemperature = ((temperature * 9/5) + 32);
         }
         //F -> C
         else if(unit.equals("F")) {
