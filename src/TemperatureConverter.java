@@ -62,6 +62,7 @@ public class TemperatureConverter {
             }
 
         }
+        System.out.println("done");
 
 
     }
