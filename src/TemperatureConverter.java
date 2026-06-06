@@ -18,7 +18,7 @@ public class TemperatureConverter {
     }
 
     public static void main(String[] args) {
-        Scanner scnr = new  Scanner(System.in);
+        Scanner scnr = new Scanner(System.in);
         String tempS;
         String unit;
         Double tempD;
@@ -28,17 +28,15 @@ public class TemperatureConverter {
         System.out.println("Please enter a temperature or type \"stop\" to quit.");
         tempS = scnr.nextLine();
 
-        if(tempS.toLowerCase().equals("stop")){
-            System.out.println("You have quit, goodbye!");
-        }
-        else {
-            for(int i = 0; i < tempS.length(); i++){
-                if(Character.isDigit(tempS.charAt(i))
+
+        while (!(tempS.toLowerCase().equals("stop"))) {
+
+            for (int i = 0; i < tempS.length(); i++) {
+                if (Character.isDigit(tempS.charAt(i))
                         || tempS.charAt(i) == '-'
-                        || tempS.charAt(i) == '.'){
+                        || tempS.charAt(i) == '.') {
                     continue;
-                }
-                else{
+                } else {
                     System.out.println("Invalid temperature input! Please try again.");
                     tempS = scnr.nextLine();
                 }
@@ -48,24 +46,29 @@ public class TemperatureConverter {
             System.out.println("Please enter a unit: ");
             unit = scnr.nextLine();
 
-            //check again after fix
-            if(unit.toUpperCase().equals("C") || unit.toUpperCase().equals("F")){
+            while(!unit.toUpperCase().equals("C") && !unit.toUpperCase().equals("F")) {
+                System.out.println("Invalid unit input! Please try again.");
+                unit = scnr.nextLine();
+            }
+
+            if (unit.toUpperCase().equals("C") || unit.toUpperCase().equals("F")) {
                 System.out.println("Conversion beginning");
-                System.out.printf("%.2f%n",tempD);
+                System.out.printf("%.2f%n", tempD);
                 convertedTemp = convertTemperature(tempD, unit);
                 System.out.printf("%.2f%n", convertedTemp);
             }
-            else{
-                System.out.println("Invalid unit input! Please try again.");
-                unit = scnr.nextLine();
-                //FIXME - doesnt get new value and loop
-            }
 
+            System.out.println("Please enter another temperature or type \"stop\" to quit.");
+            tempS = scnr.nextLine();
         }
-        System.out.println("done");
 
+        System.out.println("You have quit, goodbye!");
 
     }
 
 
+
 }
+
+
+
