@@ -2,6 +2,11 @@ import java.util.Scanner;
 
 public class TemperatureConverter {
 
+//Kayla Defibaugh COMP167-Summer2026 Due:06/07
+    //This program is used to convert basic temperatures. Taking all values and recognizing which ones may be invalid and
+    //forcing a reprompt instead of an error that exits the program. Basic conversions are Celsius to Fahrenheit and vice
+    //versa. This program displays teh usage of loops with true or false (boolean) values, basics of method creation,
+    //conditional statements, variable declarations, scanner usage, and proper,readable formatting.
 
     public static double convertTemperature(double temperature, String unit) {
         double convertedTemperature = 0.0;
@@ -17,13 +22,16 @@ public class TemperatureConverter {
         return convertedTemperature;
     }
 
+    //Code for outputs to
     public static void main(String[] args) {
+        // Declaring of variables and scanner to be used throughout main.
         Scanner scnr = new Scanner(System.in);
         String tempS;
         String unit;
         Double tempD;
         Double convertedTemp;
 
+        //Initial prompting for temperature value and introduction.
         System.out.println("This is a temperature converter.");
         System.out.println("Please enter a temperature or type \"stop\" to quit.");
         tempS = scnr.nextLine();
@@ -31,6 +39,13 @@ public class TemperatureConverter {
 
         while (!(tempS.toLowerCase().equals("stop"))) {
 
+            //If no value is entered reprompt
+            while(tempS.isBlank() || tempS.isEmpty()) {
+                System.out.println("Invalid temperature input! Please try again.");
+                tempS = scnr.nextLine();
+            }
+
+            //
             for (int i = 0; i < tempS.length(); i++) {
                 if (Character.isDigit(tempS.charAt(i))
                         || tempS.charAt(i) == '-'
@@ -42,26 +57,44 @@ public class TemperatureConverter {
                 }
             }
 
+
+            //Converting string to double for calculations
             tempD = Double.parseDouble(tempS);
+
+
+            //Asking for unit
             System.out.println("Please enter a unit: ");
             unit = scnr.nextLine();
 
+            //Loop for invalid unit inputs.
             while(!unit.toUpperCase().equals("C") && !unit.toUpperCase().equals("F")) {
                 System.out.println("Invalid unit input! Please try again.");
                 unit = scnr.nextLine();
             }
 
+            //Converting temps and outputting properly.
             if (unit.toUpperCase().equals("C") || unit.toUpperCase().equals("F")) {
-                System.out.println("Conversion beginning");
-                System.out.printf("%.2f%n", tempD);
                 convertedTemp = convertTemperature(tempD, unit);
-                System.out.printf("%.2f%n", convertedTemp);
+
+                System.out.print(tempS);
+                if(unit.toUpperCase().equals("C")) {
+                    System.out.printf("°C is equal to %.2f", convertedTemp);
+                    System.out.println("°F");
+                }
+                else{
+                    System.out.printf("°F is equal to %.2f", convertedTemp);
+                    System.out.println("°C");
+                }
+                System.out.println("______________________");
             }
 
+            //Used so value of temp reloops until stop is input.
+            System.out.println();
             System.out.println("Please enter another temperature or type \"stop\" to quit.");
             tempS = scnr.nextLine();
         }
 
+        //Quit message before end of code.
         System.out.println("You have quit, goodbye!");
 
     }
