@@ -30,6 +30,7 @@ public class TemperatureConverter {
         String unit;
         Double tempD;
         Double convertedTemp;
+        char degreeSymbol = '\u00B0';
 
         //Initial prompting for temperature value and introduction.
         System.out.println("This is a temperature converter.");
@@ -78,12 +79,14 @@ public class TemperatureConverter {
 
                 System.out.print(tempS);
                 if(unit.toUpperCase().equals("C")) {
-                    System.out.printf("°C is equal to %.2f", convertedTemp);
-                    System.out.println("°F");
+                    System.out.print(degreeSymbol);
+                    System.out.printf("C is equal to %.2f", convertedTemp);
+                    System.out.println(degreeSymbol + "F");
                 }
                 else{
+                    System.out.print(degreeSymbol);
                     System.out.printf("°F is equal to %.2f", convertedTemp);
-                    System.out.println("°C");
+                    System.out.println(degreeSymbol + "C");
                 }
                 System.out.println("______________________");
             }
