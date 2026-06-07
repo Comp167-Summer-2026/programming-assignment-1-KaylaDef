@@ -85,7 +85,7 @@ public class TemperatureConverter {
                 }
                 else{
                     System.out.print(degreeSymbol);
-                    System.out.printf("°F is equal to %.2f", convertedTemp);
+                    System.out.printf("F is equal to %.2f", convertedTemp);
                     System.out.println(degreeSymbol + "C");
                 }
                 System.out.println("______________________");
